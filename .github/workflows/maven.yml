@@ -24,7 +24,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        maven: '3.1.0'
+        maven: '3.8.0'
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
