@@ -8,7 +8,7 @@ public class UserController {
 
     @GetMapping
     public String hello(){
-        return "Dorsia, yea, Dorsia sound great";
+        return "Dorsia, yea, Dorsia sound great. Hey Paul! Try Getting A Reservation At Dorsia Now!";
     }
 
 }
