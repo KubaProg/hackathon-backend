@@ -2,7 +2,9 @@ package pl.nullpointers.hackathonbackend.Filter;
 
 import org.springframework.stereotype.Service;
 import pl.nullpointers.hackathonbackend.Cable.CableData;
+import pl.nullpointers.hackathonbackend.Cable.CableDataMapper;
 import pl.nullpointers.hackathonbackend.Cable.CableDataRepository;
+import pl.nullpointers.hackathonbackend.Cable.CableOutput;
 import pl.nullpointers.hackathonbackend.inputHandler.Input;
 
 import java.util.ArrayList;
@@ -17,9 +19,11 @@ public class FilterService {
 
     private static final Map<String, String> METAL_TYPE_MAPPING = new HashMap<>();
     private CableDataRepository cableDataRepository;
+    private CableDataMapper cableDataMapper;
 
-    public FilterService(CableDataRepository cableDataRepository) {
+    public FilterService(CableDataRepository cableDataRepository, CableDataMapper cableDataMapper) {
         this.cableDataRepository = cableDataRepository;
+        this.cableDataMapper = cableDataMapper;
     }
 
     static {
@@ -32,7 +36,7 @@ public class FilterService {
 
 
 
-    public List<CableData> filterCables(Input input) {
+    public List<CableOutput> filterCables(Input input) {
 
         List<CableData> cables = cableDataRepository.findAll();
         List<CableData> filteredCables = new ArrayList<>();
@@ -46,7 +50,7 @@ public class FilterService {
             }
         }
 
-        return filteredCables;
+        return  cableDataMapper.mapToListOfCableOutput(filteredCables);
     }
 
     private boolean filterByMetalType(String cableType, String metalType) {

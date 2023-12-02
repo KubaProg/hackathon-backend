@@ -8,7 +8,6 @@ import lombok.Setter;
 public class CableOutput {
 
 
-    private Long id;
 
     // rodzaj żyły
     private String cableType;
@@ -29,5 +28,8 @@ public class CableOutput {
     private String referenceMethod;
 
     // wartosć Przekróju żyły
-    private String conductorCrossSections;
+//    private String conductorCrossSections;
+
+
+    // add attributes
 }
