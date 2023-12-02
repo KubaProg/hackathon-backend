@@ -1,5 +1,6 @@
 package pl.nullpointers.hackathonbackend.Cable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,8 +15,10 @@ public class ConductorCrossSection {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonProperty("currentCapacity")
     private Double value;
 
+    @JsonProperty("value")
     private Double currentCapacity;
 
     @ManyToOne
