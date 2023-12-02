@@ -1,4 +1,4 @@
-package pl.nullpointers.hackathonbackend.Filter;
+package pl.nullpointers.hackathonbackend.Cable.Filter;
 
 import org.springframework.stereotype.Service;
 

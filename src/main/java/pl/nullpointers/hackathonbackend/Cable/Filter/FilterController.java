@@ -1,10 +1,6 @@
-package pl.nullpointers.hackathonbackend.Filter;
+package pl.nullpointers.hackathonbackend.Cable.Filter;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.nullpointers.hackathonbackend.Cable.CableOutput;
-
-import java.util.List;
 
 @RestController
 public class FilterController {
