@@ -1,6 +1,8 @@
 package pl.nullpointers.hackathonbackend.inputHandler;
 
+import lombok.Getter;
 
+@Getter
 public class Input {
     private String material;
     private String isolation;

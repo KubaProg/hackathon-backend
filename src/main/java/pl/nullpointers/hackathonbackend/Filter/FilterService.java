@@ -1,8 +1,12 @@
 package pl.nullpointers.hackathonbackend.Filter;
 
 import org.springframework.stereotype.Service;
+import pl.nullpointers.hackathonbackend.Cable.CableData;
+import pl.nullpointers.hackathonbackend.inputHandler.Input;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -17,11 +21,25 @@ public class FilterService {
         METAL_TYPE_MAPPING.put("b", "Al");
     }
 
-    public boolean filterCable(String cableType, String metalType, String insulationType, int numberOfCores, String numberOfLoadedCoresType, String installationMethod) {
-        return filterByMetalType(cableType, metalType)
-                && filterByInsulationType(cableType, insulationType)
-                && filterByNumberOfLoadedCores(numberOfCores, numberOfLoadedCoresType)
-                && filterByInstallationMethod(installationMethod);
+
+    // not working yet
+    public List<CableData> filterCables(Input input) {
+
+        // to fix
+        List<CableData> cables = new ArrayList<>();
+
+        List<CableData> filteredCables = new ArrayList<>();
+
+        for (CableData cable : cables) {
+            if (filterByMetalType(cable.getCableType(), input.getMaterial())
+                    && filterByInsulationType(cable.getCableType(), input.getIsolation())
+                    && filterByNumberOfLoadedCores(cable.getNumberOfCores(), input.getPower())
+                    && filterByInstallationMethod(cable.getInstallationMethod())) {
+                filteredCables.add(cable);
+            }
+        }
+
+        return filteredCables;
     }
 
     private boolean filterByMetalType(String cableType, String metalType) {
