@@ -1,4 +1,4 @@
-package pl.nullpointers.hackathonbackend.Cable.Filter;
+package pl.nullpointers.hackathonbackend.Filter;
 
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,4 +1,4 @@
-package pl.nullpointers.hackathonbackend.CableRecord;
+package pl.nullpointers.hackathonbackend.Cable;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
