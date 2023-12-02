@@ -1,6 +1,7 @@
 package pl.nullpointers.hackathonbackend.Filter;
 
 import org.springframework.stereotype.Service;
+import org.w3c.dom.css.Counter;
 import pl.nullpointers.hackathonbackend.Cable.CableData;
 import pl.nullpointers.hackathonbackend.Cable.CableDataMapper;
 import pl.nullpointers.hackathonbackend.Cable.CableDataRepository;
@@ -23,9 +24,10 @@ public class FilterService {
     private CableDataMapper cableDataMapper;
     private CounterService counterService;
 
-    public FilterService(CableDataRepository cableDataRepository, CableDataMapper cableDataMapper) {
+    public FilterService(CableDataRepository cableDataRepository, CableDataMapper cableDataMapper, CounterService counterService) {
         this.cableDataRepository = cableDataRepository;
         this.cableDataMapper = cableDataMapper;
+        this.counterService = counterService;
     }
 
     static {
