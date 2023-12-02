@@ -2,6 +2,7 @@ package pl.nullpointers.hackathonbackend.Cable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,6 +40,7 @@ public class CableData {
 
     @JsonProperty("current_capacity")
     @OneToMany(mappedBy = "cableData")
+    @JsonManagedReference
     private List<ConductorCrossSection> conductorCrossSections;
 
 

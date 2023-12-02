@@ -1,5 +1,6 @@
 package pl.nullpointers.hackathonbackend.Cable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class ConductorCrossSection {
 
     @ManyToOne
     @JoinColumn(name = "cable_data_id")
+    @JsonBackReference  // Designates this side as the "backward" side
     private CableData cableData;
 
 
