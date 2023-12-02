@@ -1,6 +1,5 @@
-package pl.nullpointers.hackathonbackend.CableRecord;
+package pl.nullpointers.hackathonbackend.Cable;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
