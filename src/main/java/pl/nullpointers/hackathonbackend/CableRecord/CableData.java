@@ -1,27 +1,23 @@
 package pl.nullpointers.hackathonbackend.CableRecord;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class CableData {
-//    przewód/kabel
-////            obwód
-////    liczba żył
-////    liczba żył obciążonych prądowo
-////    sposób instalacji
-////    metoda referencyjna
-////
-////
-////    przekrój żyły
-
-    // Przewód/kabel
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // rodzaj żyły
     private String cableType;
 
     // Obwód
@@ -42,9 +38,6 @@ public class CableData {
     // Przekrój żyły (relationship to another entity)
     @OneToMany(mappedBy = "cableData")
     private List<ConductorCrossSection> conductorCrossSections;
-
-
-
 
 
 }

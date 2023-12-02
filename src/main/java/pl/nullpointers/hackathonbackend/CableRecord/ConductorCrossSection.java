@@ -1,8 +1,14 @@
 package pl.nullpointers.hackathonbackend.CableRecord;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class ConductorCrossSection {
 
     @Id
@@ -16,4 +22,6 @@ public class ConductorCrossSection {
     @ManyToOne
     @JoinColumn(name = "cable_data_id")
     private CableData cableData;
+
+
 }
