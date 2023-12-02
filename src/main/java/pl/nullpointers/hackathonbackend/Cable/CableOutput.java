@@ -1,8 +1,10 @@
 package pl.nullpointers.hackathonbackend.Cable;
 
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.List;
-
+@Getter
+@Setter
 public class CableOutput {
 
 
