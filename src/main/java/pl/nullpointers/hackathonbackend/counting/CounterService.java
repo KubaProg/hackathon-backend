@@ -23,4 +23,29 @@ public class CounterService {
         }
     }
 
+    public Double countAirTemperatureFactor(Double temperature){
+        if(temperature!=30){
+
+        }
+        return 0.0;
+    }
+
+    public Double countCircuitNumberFactor(){
+        return 0.0;
+    }
+
+    public Double countSoilTemperatureFactor(Double temperature){
+        if(temperature!=20){
+
+        }
+        return 0.0;
+    }
+
+    public Double countSoilResistivityFactor(Double temperature){
+        if(temperature!=0){
+
+        }
+        return 0.0;
+    }
+
 }
