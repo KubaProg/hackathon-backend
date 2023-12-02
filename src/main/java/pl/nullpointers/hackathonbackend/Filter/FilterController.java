@@ -1,6 +1,7 @@
 package pl.nullpointers.hackathonbackend.Filter;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import pl.nullpointers.hackathonbackend.inputHandler.Input;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://ec2-54-227-117-32.compute-1.amazonaws.com:8080")
 public class FilterController {
 
     private FilterService filterService;
