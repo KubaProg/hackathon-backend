@@ -1,9 +1,12 @@
-package pl.nullpointers.hackathonbackend.Cable;
+package pl.nullpointers.hackathonbackend.CableRecord;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,29 +14,30 @@ import java.util.List;
 @Setter
 public class CableData {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // rodzaj żyły
+    @JsonProperty("cable")
     private String cableType;
 
-    // Obwód
+    @JsonProperty("circuit")
     private String circuit;
 
-    // Liczba żył
+    @JsonProperty("number_of_cores")
     private int numberOfCores;
 
-    // Liczba żył obciążonych prądowo
+    @JsonProperty("number_of_current_carrying_cores")
     private int numberOfCoresLoaded;
 
-    // Sposób instalacji
+    @JsonProperty("installation_method")
     private String installationMethod;
 
-    // Metoda referencyjna
+    @JsonProperty("reference_method")
     private String referenceMethod;
 
-    // Przekrój żyły (relationship to another entity)
+    @JsonProperty("current_capacity")
     @OneToMany(mappedBy = "cableData")
     private List<ConductorCrossSection> conductorCrossSections;
 
