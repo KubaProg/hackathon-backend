@@ -2,6 +2,7 @@ package pl.nullpointers.hackathonbackend.Filter;
 
 import org.springframework.stereotype.Service;
 import pl.nullpointers.hackathonbackend.Cable.CableData;
+import pl.nullpointers.hackathonbackend.Cable.CableDataRepository;
 import pl.nullpointers.hackathonbackend.inputHandler.Input;
 
 import java.util.ArrayList;
@@ -15,26 +16,32 @@ public class FilterService {
 
 
     private static final Map<String, String> METAL_TYPE_MAPPING = new HashMap<>();
+    private CableDataRepository cableDataRepository;
+
+    public FilterService(CableDataRepository cableDataRepository) {
+        this.cableDataRepository = cableDataRepository;
+    }
 
     static {
         METAL_TYPE_MAPPING.put("a", "Cu");
         METAL_TYPE_MAPPING.put("b", "Al");
+
+
     }
 
 
-    // not working yet
+
+
     public List<CableData> filterCables(Input input) {
 
-        // to fix
-        List<CableData> cables = new ArrayList<>();
-
+        List<CableData> cables = cableDataRepository.findAll();
         List<CableData> filteredCables = new ArrayList<>();
 
         for (CableData cable : cables) {
             if (filterByMetalType(cable.getCableType(), input.getMaterial())
                     && filterByInsulationType(cable.getCableType(), input.getIsolation())
-                    && filterByNumberOfLoadedCores(cable.getNumberOfCores(), input.getPower())
-                    && filterByInstallationMethod(cable.getInstallationMethod())) {
+                    && filterByNumberOfLoadedCores(cable.getNumberOfCoresLoaded(), input.getCoresLoaded())
+                    && filterByInstallationMethod(cable.getReferenceMethod(), input.getTypeOfInstalation())) {
                 filteredCables.add(cable);
             }
         }
@@ -56,43 +63,29 @@ public class FilterService {
 
     private boolean filterByInsulationType(String cableType, String insulationType) {
         if (insulationType.equals("a")) {
-            return cableType.equals("YKY") && getMaxTemperature(cableType) == 70;
+            return cableType.contains("YKY");
         } else if (insulationType.equals("b")) {
-            return (cableType.equals("YKXS") || cableType.equals("YAKXS")) && getMaxTemperature(cableType) == 90;
+            return (cableType.contains("YKXS") || cableType.contains("YAKXS"));
         } else if (insulationType.equals("c")) {
-            return cableType.equals("N2XH") && getMaxTemperature(cableType) == 90;
+            return cableType.contains("N2XH");
         }
         return false;
     }
 
-    private int getMaxTemperature(String cableType) {
-        switch (cableType) {
-            case "YKY":
-                return 70;
-            case "YKXS":
-            case "YAKXS":
-            case "N2XH":
-                return 90;
-            default:
-                return 0;
-        }
+
+    private boolean filterByNumberOfLoadedCores(int numberOfCoresLoaded, String coresLoaded) {
+        // Mapa tłumaczenia literkowych wartości na liczby
+        Map<String, Integer> coresMapping = Map.of("a", 2, "b", 3, "c", 3);
+
+        // Pobierz odpowiednią liczbę rdzeni na podstawie literkowej wartości
+        int expectedNumberOfCores = coresMapping.get(coresLoaded);
+
+        // Porównaj z rzeczywistą liczbą rdzeni
+        return numberOfCoresLoaded == expectedNumberOfCores;
     }
 
-    private boolean filterByNumberOfLoadedCores(int numberOfCores, String numberOfLoadedCoresType) {
-        if (numberOfLoadedCoresType.equals("a")) {
-            return numberOfCores == 2;
-        } else if (numberOfLoadedCoresType.equals("b") || numberOfLoadedCoresType.equals("c")) {
-            return numberOfCores == 3;
-        }
-        return false;
-    }
-
-    private boolean filterByInstallationMethod(String installationMethod) {
-        // Zakładam, że przekazane wartości odpowiadają dostępnym wartościom
-        return installationMethod.equals("A1") || installationMethod.equals("A2")
-                || installationMethod.equals("B1") || installationMethod.equals("B2")
-                || installationMethod.equals("E") || installationMethod.equals("F")
-                || installationMethod.equals("D1") || installationMethod.equals("D2");
+    private boolean filterByInstallationMethod(String cableTypeOfInstalation, String requiredTypeOfInstalation) {
+        return cableTypeOfInstalation.equals(requiredTypeOfInstalation);
     }
 
 
