@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.nullpointers.hackathonbackend.Cable.CableData;
 import pl.nullpointers.hackathonbackend.Cable.CableDataMapper;
 import pl.nullpointers.hackathonbackend.Cable.CableDataRepository;
+import pl.nullpointers.hackathonbackend.counting.CounterService;
 import pl.nullpointers.hackathonbackend.Cable.CableOutput;
 import pl.nullpointers.hackathonbackend.inputHandler.Input;
 
@@ -20,6 +21,7 @@ public class FilterService {
     private static final Map<String, String> METAL_TYPE_MAPPING = new HashMap<>();
     private CableDataRepository cableDataRepository;
     private CableDataMapper cableDataMapper;
+    private CounterService counterService;
 
     public FilterService(CableDataRepository cableDataRepository, CableDataMapper cableDataMapper) {
         this.cableDataRepository = cableDataRepository;
@@ -46,6 +48,19 @@ public class FilterService {
                     && filterByInsulationType(cable.getCableType(), input.getIsolation())
                     && filterByNumberOfLoadedCores(cable.getNumberOfCoresLoaded(), input.getCoresLoaded())
                     && filterByInstallationMethod(cable.getReferenceMethod(), input.getTypeOfInstalation())) {
+
+
+                //Obliczamy tutaj Iobl po raz pierwszy
+                Double extractVoltage = counterService.extractVoltage(String.valueOf(cable.getNumberOfCores()));
+                Double Iobl = counterService.countIobl(Double.parseDouble(input.getPower()), extractVoltage);
+
+
+                //Teraz wyciągamy dane z tabelek i na podstawie wspł. korygujących liczymy Iost
+
+
+
+                //Teraz mamy prąd obciążeniowy więc wyciągamy przekroj i doklejamy do reponsa???
+
                 filteredCables.add(cable);
             }
         }
