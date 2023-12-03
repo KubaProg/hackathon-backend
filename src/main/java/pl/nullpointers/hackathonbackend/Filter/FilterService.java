@@ -94,7 +94,7 @@ public class FilterService {
                 CableOutput cableOutput = cableDataMapper.mapToCableOutput(cable);
                 cableOutput.setMaterial(MATERIAL_TYPE_MAPPING.get(input.getMaterial()));
                 cableOutput.setIsolation(ISOLATION_TYPE_MAPPING.get(input.getIsolation()));
-                cableOutput.setConductorCrossSections(przekroj.toString());
+                cableOutput.setPrzekroj(przekroj.toString());
 
 
                 filteredCables.add(cableOutput);

@@ -33,7 +33,7 @@ public class CableOutput {
 
 
     // wartosć Przekróju żyły
-    private String conductorCrossSections;
+    private String przekroj;
 
 
     // add attributes
