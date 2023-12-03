@@ -12,7 +12,7 @@ import pl.nullpointers.hackathonbackend.inputHandler.Input;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://ec2-54-227-117-32.compute-1.amazonaws.com:8080")
+@CrossOrigin(origins = "http://localhost:5173")
 public class FilterController {
 
     private FilterService filterService;
