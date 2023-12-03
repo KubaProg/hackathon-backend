@@ -1,6 +1,7 @@
 package pl.nullpointers.hackathonbackend.counting;
 
 import org.springframework.stereotype.Service;
+import pl.nullpointers.hackathonbackend.inputHandler.Input;
 
 import static java.lang.Math.sqrt;
 
@@ -9,10 +10,12 @@ public class CounterService {
 
     private TemperatureCableFactors temperatureCableFactors;
     private SoilTemperatureCableFactors soilTemperatureCableFactors;
+    private ThermalResistanceFactors thermalResistanceFactors;
 
-    public CounterService(TemperatureCableFactors temperatureCableFactors, SoilTemperatureCableFactors soilTemperatureCableFactors) {
+    public CounterService(TemperatureCableFactors temperatureCableFactors, SoilTemperatureCableFactors soilTemperatureCableFactors, ThermalResistanceFactors thermalResistanceFactors) {
         this.temperatureCableFactors = temperatureCableFactors;
         this.soilTemperatureCableFactors = soilTemperatureCableFactors;
+        this.thermalResistanceFactors = thermalResistanceFactors;
     }
 
     public Double countIobl(Double power, Double voltage){
@@ -43,11 +46,8 @@ public class CounterService {
         return soilTemperatureCableFactors.getFactor(cableType, temperature);
     }
 
-    public Double countSoilResistivityFactor(Double temperature){
-        if(temperature!=0){
-
-        }
-        return 0.0;
+    public Double countSoilResistivityFactor(String cableType, Double resistivity ){
+        return thermalResistanceFactors.getThermalResistanceFactor(cableType,resistivity );
     }
 
 }

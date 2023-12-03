@@ -65,14 +65,17 @@ public class FilterService {
 
 
                 //Teraz wyciągamy dane z tabelek i na podstawie wspł. korygujących liczymy Iost
-                if(!input.getTypeOfInstalation().contains("D")){
+
+                //temperatura i powietrze czynnik
+                if(input.getTypeOfInstalation().contains("E") || input.getTypeOfInstalation().contains("F") ){
                     Double airTemperatureFactor = counterService.countAirTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
                 }
 
+                //temperatura i gleba czynnik i rezystywnosc czynnik
                 if(input.getTypeOfInstalation().contains("D")){
-                    Double aDouble = counterService.countSoilTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
+                    Double soilTemperatureFactor = counterService.countSoilTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
+                    Double soilResistivityFactor = counterService.countSoilResistivityFactor(input.getIsolation(), Double.valueOf(input.getSoilResistivity()));
                 }
-
 
 
 

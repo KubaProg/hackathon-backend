@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import pl.nullpointers.hackathonbackend.Cable.CableDataService;
 import pl.nullpointers.hackathonbackend.counting.SoilTemperatureCableFactors;
 import pl.nullpointers.hackathonbackend.counting.TemperatureCableFactors;
+import pl.nullpointers.hackathonbackend.counting.ThermalResistanceFactors;
 
 @SpringBootApplication
 public class HackathonBackendApplication {
@@ -213,6 +214,14 @@ public class HackathonBackendApplication {
         soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 70, 0.53);
         soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 75, 0.46);
         soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 80, 0.38);
+
+
+
+
+
+        ThermalResistanceFactors thermalResistanceFactors = new ThermalResistanceFactors();
+
+
 
 
 
