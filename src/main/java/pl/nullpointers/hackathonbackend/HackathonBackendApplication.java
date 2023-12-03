@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import pl.nullpointers.hackathonbackend.Cable.CableDataService;
+import pl.nullpointers.hackathonbackend.counting.SoilTemperatureCableFactors;
 import pl.nullpointers.hackathonbackend.counting.TemperatureCableFactors;
 
 @SpringBootApplication
@@ -120,6 +121,102 @@ public class HackathonBackendApplication {
         temperatureCableFactors.addFactor("N2XH 0,6/1kV", 70, 0.58);
         temperatureCableFactors.addFactor("N2XH 0,6/1kV", 75, 0.5);
         temperatureCableFactors.addFactor("N2XH 0,6/1kV", 80, 0.41);
+
+
+
+
+
+
+
+
+        SoilTemperatureCableFactors soilTemperatureCableFactors = new SoilTemperatureCableFactors();
+
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 10, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 15, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 20, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 25, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 30, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 35, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 40, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 45, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 50, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 55, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 60, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 65, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 70, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 75, 0.0);
+        soilTemperatureCableFactors.addFactor("YDY 450/750V", 80, 0.0);
+
+// Add factors for YDYp 450/750V
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 10, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 15, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 20, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 25, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 30, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 35, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 40, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 45, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 50, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 55, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 60, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 65, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 70, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 75, 0.0);
+        soilTemperatureCableFactors.addFactor("YDYp 450/750V", 80, 0.0);
+
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 10, 1.1);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 15, 1.05);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 20, 1.0);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 25, 0.95);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 30, 0.89);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 35, 0.84);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 40, 0.77);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 45, 0.71);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 50, 0.63);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 55, 0.55);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 60, 0.45);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 65, 0.0);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 70, 0.0);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 75, 0.0);
+        soilTemperatureCableFactors.addFactor("YKY 0,6/1kV", 80, 0.0);
+
+// Add factors for YKXS 0,6/1kV
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 10, 1.07);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 15, 1.04);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 20, 1.0);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 25, 0.96);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 30, 0.93);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 35, 0.89);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 40, 0.85);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 45, 0.8);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 50, 0.76);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 55, 0.71);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 60, 0.65);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 65, 0.6);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 70, 0.53);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 75, 0.46);
+        soilTemperatureCableFactors.addFactor("YKXS 0,6/1kV", 80, 0.38);
+
+// Add factors for YAKXS 0,6/1kV
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 10, 1.07);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 15, 1.04);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 20, 1.0);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 25, 0.96);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 30, 0.93);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 35, 0.89);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 40, 0.85);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 45, 0.8);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 50, 0.76);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 55, 0.71);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 60, 0.65);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 65, 0.6);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 70, 0.53);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 75, 0.46);
+        soilTemperatureCableFactors.addFactor("YAKXS 0,6/1kV", 80, 0.38);
+
+
+
+
 
     }
 

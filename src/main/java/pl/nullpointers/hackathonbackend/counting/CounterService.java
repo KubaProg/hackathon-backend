@@ -8,9 +8,11 @@ import static java.lang.Math.sqrt;
 public class CounterService {
 
     private TemperatureCableFactors temperatureCableFactors;
+    private SoilTemperatureCableFactors soilTemperatureCableFactors;
 
-    public CounterService(TemperatureCableFactors temperatureCableFactors) {
+    public CounterService(TemperatureCableFactors temperatureCableFactors, SoilTemperatureCableFactors soilTemperatureCableFactors) {
         this.temperatureCableFactors = temperatureCableFactors;
+        this.soilTemperatureCableFactors = soilTemperatureCableFactors;
     }
 
     public Double countIobl(Double power, Double voltage){
@@ -37,11 +39,8 @@ public class CounterService {
         return 0.0;
     }
 
-    public Double countSoilTemperatureFactor(Double temperature){
-        if(temperature!=20){
-
-        }
-        return 0.0;
+    public Double countSoilTemperatureFactor(String cableType, int temperature){
+        return soilTemperatureCableFactors.getFactor(cableType, temperature);
     }
 
     public Double countSoilResistivityFactor(Double temperature){

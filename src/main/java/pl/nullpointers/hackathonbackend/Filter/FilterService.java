@@ -58,8 +58,15 @@ public class FilterService {
 
 
                 //Teraz wyciągamy dane z tabelek i na podstawie wspł. korygujących liczymy Iost
+                if(!input.getTypeOfInstalation().contains("D")){
+                    Double airTemperatureFactor = counterService.countAirTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
+                }
 
-                Double airTemperatureFactor = counterService.countAirTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
+                if(input.getTypeOfInstalation().contains("D")){
+                    Double aDouble = counterService.countSoilTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
+                }
+
+
 
 
                 //Teraz mamy prąd obciążeniowy więc wyciągamy przekroj i doklejamy do reponsa???
