@@ -7,6 +7,12 @@ import static java.lang.Math.sqrt;
 @Service
 public class CounterService {
 
+    private TemperatureCableFactors temperatureCableFactors;
+
+    public CounterService(TemperatureCableFactors temperatureCableFactors) {
+        this.temperatureCableFactors = temperatureCableFactors;
+    }
+
     public Double countIobl(Double power, Double voltage){
         if(voltage==230.0){
             return power / (voltage*0.8);
@@ -23,9 +29,9 @@ public class CounterService {
         }
     }
 
-    public Double countAirTemperatureFactor(Double temperature){
+    public Double countAirTemperatureFactor(String cableType, Double temperature){
         if(temperature!=30){
-
+            temperatureCableFactors.getFactor(cableType, temperature.intValue());
         }
         return 0.0;
     }
