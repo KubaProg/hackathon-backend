@@ -1,8 +1,10 @@
 package pl.nullpointers.hackathonbackend.circuit_correction;
 
 import org.springframework.stereotype.Service;
+import pl.nullpointers.hackathonbackend.Cable.CableData;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,4 +35,39 @@ public class CircuitCorrectionsFactorService {
         // Save to the database
         circuitCorrectionRepository.saveAll(circuitCorrectionFactorsList);
     }
+
+    public String getCorrectionfactorsByNumberOfCables(int numberOfCables, CableData cableData) {
+
+        String installationMethod = cableData.getInstallationMethod();
+        String column = "";
+
+        if (installationMethod.contains("wielożyłowy")) {
+            column = "B";
+
+        } else if (installationMethod.contains("jednożyłowych") ) {
+            column = "A";
+        } else {
+            column = "C";
+        }
+
+        List<CircuitCorrectionFactors> rows = new ArrayList<>();
+
+        switch (column.toUpperCase()) {
+            case "A":
+                rows = circuitCorrectionRepository.getByColumnA();
+                return rows.get(numberOfCables - 1).getColumnA();
+            case "B":
+                rows = circuitCorrectionRepository.getByColumnB();
+                return rows.get(numberOfCables - 1).getColumnB();
+            case "C":
+                rows = circuitCorrectionRepository.getByColumnC();
+                return rows.get(numberOfCables - 1).getColumnC();
+            default:
+                return "";
+        }
+
+
+
+    }
+
 }
