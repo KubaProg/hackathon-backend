@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface CircuitCorrectionRepository extends JpaRepository<CircuitCorrectionFactors, Long> {
 
-    List<CircuitCorrectionFactors> getByColumnA();
-    List<CircuitCorrectionFactors> getByColumnB();
-    List<CircuitCorrectionFactors> getByColumnC();
+//    List<CircuitCorrectionFactors> getByColumnA();
+//    List<CircuitCorrectionFactors> getByColumnB();
+//    List<CircuitCorrectionFactors> getByColumnC();
 
 }

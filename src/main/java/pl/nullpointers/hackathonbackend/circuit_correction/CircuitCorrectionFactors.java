@@ -39,4 +39,8 @@ public class CircuitCorrectionFactors {
         this.columnB = columnB;
         this.columnC = columnC;
     }
+
+    public CircuitCorrectionFactors() {
+
+    }
 }

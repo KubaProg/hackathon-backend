@@ -36,38 +36,38 @@ public class CircuitCorrectionsFactorService {
         circuitCorrectionRepository.saveAll(circuitCorrectionFactorsList);
     }
 
-    public String getCorrectionfactorsByNumberOfCables(int numberOfCables, CableData cableData) {
-
-        String installationMethod = cableData.getInstallationMethod();
-        String column = "";
-
-        if (installationMethod.contains("wielożyłowy")) {
-            column = "B";
-
-        } else if (installationMethod.contains("jednożyłowych") ) {
-            column = "A";
-        } else {
-            column = "C";
-        }
-
-        List<CircuitCorrectionFactors> rows = new ArrayList<>();
-
-        switch (column.toUpperCase()) {
-            case "A":
-                rows = circuitCorrectionRepository.getByColumnA();
-                return rows.get(numberOfCables - 1).getColumnA();
-            case "B":
-                rows = circuitCorrectionRepository.getByColumnB();
-                return rows.get(numberOfCables - 1).getColumnB();
-            case "C":
-                rows = circuitCorrectionRepository.getByColumnC();
-                return rows.get(numberOfCables - 1).getColumnC();
-            default:
-                return "";
-        }
-
-
-
-    }
+//    public String getCorrectionfactorsByNumberOfCables(int numberOfCables, CableData cableData) {
+//
+//        String installationMethod = cableData.getInstallationMethod();
+//        String column = "";
+//
+//        if (installationMethod.contains("wielożyłowy")) {
+//            column = "B";
+//
+//        } else if (installationMethod.contains("jednożyłowych") ) {
+//            column = "A";
+//        } else {
+//            column = "C";
+//        }
+//
+//        List<CircuitCorrectionFactors> rows = new ArrayList<>();
+//
+//        switch (column.toUpperCase()) {
+//            case "A":
+//                rows = circuitCorrectionRepository.getByColumnA();
+//                return rows.get(numberOfCables - 1).getColumnA();
+//            case "B":
+//                rows = circuitCorrectionRepository.getByColumnB();
+//                return rows.get(numberOfCables - 1).getColumnB();
+//            case "C":
+//                rows = circuitCorrectionRepository.getByColumnC();
+//                return rows.get(numberOfCables - 1).getColumnC();
+//            default:
+//                return "";
+//        }
+//
+//
+//
+//    }
 
 }
