@@ -15,3 +15,4 @@ public interface CircuitCorrectionRepository extends JpaRepository<CircuitCorrec
 //    List<CircuitCorrectionFactors> getByColumnC();
 
 }
+gi
