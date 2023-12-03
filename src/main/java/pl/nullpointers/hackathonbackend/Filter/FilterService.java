@@ -67,6 +67,9 @@ public class FilterService {
                 //temperatura i powietrze czynnik
                 if(input.getTypeOfInstalation().contains("E") || cable.getCableType().contains("F") ){
                     airTemperatureFactor = counterService.countAirTemperatureFactor(cable.getCableType(), Integer.parseInt(input.getTemperature()));
+                    if(airTemperatureFactor==null){
+                        airTemperatureFactor = 1.0;
+                    }
                 }
 
                 //temperatura i gleba czynnik i rezystywnosc czynnik
