@@ -2,17 +2,11 @@ package pl.nullpointers.hackathonbackend.Filter;
 
 import org.springframework.stereotype.Service;
 import org.w3c.dom.css.Counter;
-import pl.nullpointers.hackathonbackend.Cable.CableData;
-import pl.nullpointers.hackathonbackend.Cable.CableDataMapper;
-import pl.nullpointers.hackathonbackend.Cable.CableDataRepository;
+import pl.nullpointers.hackathonbackend.Cable.*;
 import pl.nullpointers.hackathonbackend.counting.CounterService;
-import pl.nullpointers.hackathonbackend.Cable.CableOutput;
 import pl.nullpointers.hackathonbackend.inputHandler.Input;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class FilterService {
@@ -60,7 +54,7 @@ public class FilterService {
 
 
                 //Obliczamy tutaj Iobl po raz pierwszy
-                Double extractVoltage = counterService.extractVoltage(String.valueOf(cable.getNumberOfCores()));
+                Double extractVoltage = counterService.extractVoltage(String.valueOf(input.getCoresLoaded()));
                 Double Iobl = counterService.countIobl(Double.parseDouble(input.getPower()), extractVoltage);
 
 
@@ -71,24 +65,36 @@ public class FilterService {
                 Double soilResistivityFactor = 1.0;
 
                 //temperatura i powietrze czynnik
-                if(input.getTypeOfInstalation().contains("E") || input.getTypeOfInstalation().contains("F") ){
-                    airTemperatureFactor = counterService.countAirTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
+                if(input.getTypeOfInstalation().contains("E") || cable.getCableType().contains("F") ){
+                    airTemperatureFactor = counterService.countAirTemperatureFactor(cable.getCableType(), Integer.parseInt(input.getTemperature()));
                 }
 
                 //temperatura i gleba czynnik i rezystywnosc czynnik
                 if(input.getTypeOfInstalation().contains("D")){
-                    soilTemperatureFactor = counterService.countSoilTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
-                    soilResistivityFactor = counterService.countSoilResistivityFactor(input.getIsolation(), Double.valueOf(input.getSoilResistivity()));
+                    soilTemperatureFactor = counterService.countSoilTemperatureFactor(cable.getCableType(), Integer.parseInt(input.getTemperature()));
+                    soilResistivityFactor = counterService.countSoilResistivityFactor(cable.getCableType(), Double.valueOf(input.getSoilResistivity()));
                 }
 
-                // TUTAJ TERAZ IOST BEDZIE OBLICZANE I PRZEKROJ POZNIEJ Z TEGO SIE DOWIEMY!
-//                counterService.countIost(Iobl)
+                //ostateczny prad
+                Double Iost = counterService.countIost(Iobl, airTemperatureFactor, soilTemperatureFactor, soilResistivityFactor);
+
+                //bierzemy sobie przekroj
+                List<ConductorCrossSection> conductorCrossSections = cable.getConductorCrossSections();
+
+                Double prad = conductorCrossSections.stream()
+                        .filter(crossSection -> crossSection.getCurrentCapacity() > Iost)
+                        .min(Comparator.comparingDouble(crossSection -> crossSection.getCurrentCapacity() - Iost)).get().getCurrentCapacity();
+
+                Double przekroj = conductorCrossSections.stream()
+                        .filter(crossSection -> crossSection.getCurrentCapacity().equals(prad))
+                        .findFirst().get().getValue();
 
                 //Teraz mamy prąd obciążeniowy więc wyciągamy przekroj i doklejamy do reponsa???
 
                 CableOutput cableOutput = cableDataMapper.mapToCableOutput(cable);
                 cableOutput.setMaterial(MATERIAL_TYPE_MAPPING.get(input.getMaterial()));
                 cableOutput.setIsolation(ISOLATION_TYPE_MAPPING.get(input.getIsolation()));
+                cableOutput.setConductorCrossSections(przekroj.toString());
 
 
                 filteredCables.add(cableOutput);

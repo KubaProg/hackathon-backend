@@ -47,11 +47,11 @@ public class CounterService {
     }
 
     public Double countSoilResistivityFactor(String cableType, Double resistivity ){
-        return thermalResistanceFactors.getThermalResistanceFactor(cableType,resistivity );
+        return thermalResistanceFactors.getThermalResistanceFactor(cableType, "Izolacja XLPE", resistivity);
     }
 
-//    public Double countIost(Double Iost, Double airTemperatureFactor, Double soilTemperatureFactor, Double soilResistivityFactor){
-//
-//    }
+    public Double countIost(Double Iost, Double airTemperatureFactor, Double soilTemperatureFactor, Double soilResistivityFactor){
+        return Iost / (airTemperatureFactor*soilTemperatureFactor*soilResistivityFactor)*0.85;
+    }
 
 }
