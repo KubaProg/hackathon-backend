@@ -50,4 +50,8 @@ public class CounterService {
         return thermalResistanceFactors.getThermalResistanceFactor(cableType,resistivity );
     }
 
+//    public Double countIost(Double Iost, Double airTemperatureFactor, Double soilTemperatureFactor, Double soilResistivityFactor){
+//
+//    }
+
 }

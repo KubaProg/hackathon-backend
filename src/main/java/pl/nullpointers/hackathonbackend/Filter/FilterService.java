@@ -66,18 +66,23 @@ public class FilterService {
 
                 //Teraz wyciągamy dane z tabelek i na podstawie wspł. korygujących liczymy Iost
 
+                Double airTemperatureFactor = 1.0;
+                Double soilTemperatureFactor = 1.0;
+                Double soilResistivityFactor = 1.0;
+
                 //temperatura i powietrze czynnik
                 if(input.getTypeOfInstalation().contains("E") || input.getTypeOfInstalation().contains("F") ){
-                    Double airTemperatureFactor = counterService.countAirTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
+                    airTemperatureFactor = counterService.countAirTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
                 }
 
                 //temperatura i gleba czynnik i rezystywnosc czynnik
                 if(input.getTypeOfInstalation().contains("D")){
-                    Double soilTemperatureFactor = counterService.countSoilTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
-                    Double soilResistivityFactor = counterService.countSoilResistivityFactor(input.getIsolation(), Double.valueOf(input.getSoilResistivity()));
+                    soilTemperatureFactor = counterService.countSoilTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
+                    soilResistivityFactor = counterService.countSoilResistivityFactor(input.getIsolation(), Double.valueOf(input.getSoilResistivity()));
                 }
 
-
+                // TUTAJ TERAZ IOST BEDZIE OBLICZANE I PRZEKROJ POZNIEJ Z TEGO SIE DOWIEMY!
+//                counterService.countIost(Iobl)
 
                 //Teraz mamy prąd obciążeniowy więc wyciągamy przekroj i doklejamy do reponsa???
 
