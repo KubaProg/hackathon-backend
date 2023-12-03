@@ -1,0 +1,56 @@
+[
+  {
+    "numberOfCircuits": 1,
+    "ColumnA": 1,
+    "ColumnB": 1,
+    "ColumnC": 1
+  },
+  {
+    "numberOfCircuits": 2,
+    "ColumnA": 0.8,
+    "ColumnB": 0.88,
+    "ColumnC": 0.87
+  },
+  {
+    "numberOfCircuits": 3,
+    "ColumnA": 0.7,
+    "ColumnB": 0.82,
+    "ColumnC": 0.82
+  },
+  {
+    "numberOfCircuits": 4,
+    "ColumnA": 0.65,
+    "ColumnB": 0.77,
+    "ColumnC": 0.8
+  },
+  {
+    "numberOfCircuits": 5,
+    "ColumnA": 0.6,
+    "ColumnB": 0.75,
+    "ColumnC": 0.8
+  },
+  {
+    "numberOfCircuits": 6,
+    "ColumnA": 0.57,
+    "ColumnB": 0.73,
+    "ColumnC": 0.79
+  },
+  {
+    "numberOfCircuits": 7,
+    "ColumnA": 0.54,
+    "ColumnB": 0.73,
+    "ColumnC": 0.79
+  },
+  {
+    "numberOfCircuits": 8,
+    "ColumnA": 0.52,
+    "ColumnB": 0.72,
+    "ColumnC": 0.78
+  },
+  {
+    "numberOfCircuits": 9,
+    "ColumnA": 0.5,
+    "ColumnB": 0.72,
+    "ColumnC": 0.78
+  }
+]
