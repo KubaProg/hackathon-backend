@@ -24,9 +24,4 @@ public class Input {
     private Double cos = 0.8;
 
 
-
-
-
-
-
 }

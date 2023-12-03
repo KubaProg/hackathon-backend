@@ -8,7 +8,9 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CableDataMapper {
 
-    List<CableOutput> mapToListOfCableOutput(List<CableData> cable);
+//    List<CableOutput> mapToListOfCableOutput(List<CableData> cable);
+
+    CableOutput mapToCableOutput(CableData cableData);
 
 
 }

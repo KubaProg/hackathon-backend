@@ -20,6 +20,8 @@ public class FilterService {
 
 
     private static final Map<String, String> METAL_TYPE_MAPPING = new HashMap<>();
+    private static final Map<String, String> MATERIAL_TYPE_MAPPING = new HashMap<>();
+    private static final Map<String, String> ISOLATION_TYPE_MAPPING = new HashMap<>();
     private CableDataRepository cableDataRepository;
     private CableDataMapper cableDataMapper;
     private CounterService counterService;
@@ -34,7 +36,12 @@ public class FilterService {
         METAL_TYPE_MAPPING.put("a", "Cu");
         METAL_TYPE_MAPPING.put("b", "Al");
 
+        MATERIAL_TYPE_MAPPING.put("a", "Cu");
+        MATERIAL_TYPE_MAPPING.put("b", "Al");
 
+        ISOLATION_TYPE_MAPPING.put("a", "PVC (polichlorek winylu)");
+        ISOLATION_TYPE_MAPPING.put("b", "XLPE (polietylen sieciowany)");
+        ISOLATION_TYPE_MAPPING.put("c", "Bezhalogenowe klasy B2ca");
     }
 
 
@@ -43,7 +50,7 @@ public class FilterService {
     public List<CableOutput> filterCables(Input input) {
 
         List<CableData> cables = cableDataRepository.findAll();
-        List<CableData> filteredCables = new ArrayList<>();
+        List<CableOutput> filteredCables = new ArrayList<>();
 
         for (CableData cable : cables) {
             if (filterByMetalType(cable.getCableType(), input.getMaterial())
@@ -71,11 +78,19 @@ public class FilterService {
 
                 //Teraz mamy prąd obciążeniowy więc wyciągamy przekroj i doklejamy do reponsa???
 
-                filteredCables.add(cable);
+                CableOutput cableOutput = cableDataMapper.mapToCableOutput(cable);
+                cableOutput.setMaterial(MATERIAL_TYPE_MAPPING.get(input.getMaterial()));
+                cableOutput.setIsolation(ISOLATION_TYPE_MAPPING.get(input.getIsolation()));
+
+
+                filteredCables.add(cableOutput);
+
+
+
             }
         }
 
-        return  cableDataMapper.mapToListOfCableOutput(filteredCables);
+        return  filteredCables;
     }
 
     private boolean filterByMetalType(String cableType, String metalType) {

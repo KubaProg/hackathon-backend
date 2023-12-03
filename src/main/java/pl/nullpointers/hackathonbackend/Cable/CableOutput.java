@@ -27,6 +27,11 @@ public class CableOutput {
     // Metoda referencyjna
     private String referenceMethod;
 
+    private String material;
+    private String isolation;
+
+
+
     // wartosć Przekróju żyły
 //    private String conductorCrossSections;
 
