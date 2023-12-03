@@ -59,6 +59,7 @@ public class FilterService {
 
                 //Teraz wyciągamy dane z tabelek i na podstawie wspł. korygujących liczymy Iost
 
+                Double airTemperatureFactor = counterService.countAirTemperatureFactor(input.getIsolation(), Integer.parseInt(input.getTemperature()));
 
 
                 //Teraz mamy prąd obciążeniowy więc wyciągamy przekroj i doklejamy do reponsa???

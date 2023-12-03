@@ -29,11 +29,8 @@ public class CounterService {
         }
     }
 
-    public Double countAirTemperatureFactor(String cableType, Double temperature){
-        if(temperature!=30){
-            temperatureCableFactors.getFactor(cableType, temperature.intValue());
-        }
-        return 0.0;
+    public Double countAirTemperatureFactor(String cableType, int temperature){
+           return temperatureCableFactors.getFactor(cableType, temperature);
     }
 
     public Double countCircuitNumberFactor(){
