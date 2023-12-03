@@ -85,7 +85,7 @@ public class FilterService {
 
     private boolean filterByInsulationType(String cableType, String insulationType) {
         if (insulationType.equals("a")) {
-            return cableType.contains("YKY");
+            return (cableType.contains("YDY") || cableType.contains("YDYp") || cableType.contains("YKY"));
         } else if (insulationType.equals("b")) {
             return (cableType.contains("YKXS") || cableType.contains("YAKXS"));
         } else if (insulationType.equals("c")) {
@@ -93,6 +93,9 @@ public class FilterService {
         }
         return false;
     }
+
+
+
 
 
     private boolean filterByNumberOfLoadedCores(int numberOfCoresLoaded, String coresLoaded) {
