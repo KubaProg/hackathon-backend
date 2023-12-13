@@ -1,30 +1,25 @@
-We have collaboratively developed a web application within a 24-hour timeframe facilitating the selection of low-voltage cables based on load specifications. The application considers input parameters such as load current or load power, environmental conditions, and installation methods.
-<br>
-<br>
-<br>
-Technologies Used:
+# Cable Selection Web Application
 
--Java: Core programming language.
+We collaboratively developed a web application within a 24-hour timeframe to facilitate the selection of low-voltage cables based on load specifications. The application considers input parameters such as load current or load power, environmental conditions, and installation methods.
 
--Spring Framework: Utilized for building a robust and scalable web application.
+## Technologies Used:
 
--H2 Database: Employed as the underlying database to manage and store data efficiently.
-<br>
-<br>
-<br>
+- **Java:** Core programming language.
+- **Spring Framework:** Utilized for building a robust and scalable web application.
+- **H2 Database:** Employed as the underlying database to manage and store data efficiently.
+
+## Features:
+
 The application accurately calculates load current, derives final current values based on correction factors, and determines the appropriate cable type considering CPR directive requirements, installation location, conductor material, and maximum operating temperature.
 
 The output includes selected cable details, input conditions, and links to NKT product pages for further reference.
-<br>
-<br>
-<br>
-Link to the front-end part : https://github.com/m60mor/hackaton-frontend
 
-Link to the mobile part : https://github.com/RavMRafiki/Hackaton.git
-<br>
-<br>
-<br>
-Below are the preview images of our app:
+## Links to Repositories:
+
+- [Frontend Repository](https://github.com/m60mor/hackaton-frontend)
+- [Mobile Repository](https://github.com/RavMRafiki/Hackaton.git)
+
+## Preview Images:
 ![image](https://github.com/KubaProg/hackathon-backend/assets/70453666/9482d66f-99b1-4424-8b67-b7cae7338596)
 
 ![image](https://github.com/KubaProg/hackathon-backend/assets/70453666/5b290cf3-679a-4145-8bd1-bff0098bff56)
