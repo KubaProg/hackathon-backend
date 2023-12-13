@@ -1,9 +1,10 @@
 We have collaboratively developed a web application facilitating the selection of low-voltage cables based on load specifications. The application considers input parameters such as load current or load power, environmental conditions, and installation methods.
 
 Technologies Used:
-Java: Core programming language.
-Spring Framework: Utilized for building a robust and scalable web application.
-H2 Database: Employed as the underlying database to manage and store data efficiently.
+
+-Java: Core programming language.
+-Spring Framework: Utilized for building a robust and scalable web application.
+-H2 Database: Employed as the underlying database to manage and store data efficiently.
 
 The application accurately calculates load current, derives final current values based on correction factors, and determines the appropriate cable type considering CPR directive requirements, installation location, conductor material, and maximum operating temperature.
 
